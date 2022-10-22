@@ -13,10 +13,10 @@ router.delete('/', auth, (request, response) => {
 				result
 			})
 		})
-		.catch((error) => {
+		.catch((e) => {
 			response.status(400).send({
 				message: "Failed to delete",
-				error
+				e
 			})
 		})
 })
