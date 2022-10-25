@@ -1,8 +1,8 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
 const dbConnect = require('./models/dbConnect');
 
@@ -25,21 +25,6 @@ app.use((req, res, next) => {
 });
 
 
-// import Routes
-var usersRouter = require('./routes/users');
-const registerRouter = require('./routes/register')
-const loginRouter = require('./routes/login');
-
-
-// import Authorization required routes
-const manageRouter = require('./routes/auth/manage');
-const addStaffRouter = require('./routes/auth/addStaff');
-const createTimeSheet = require('./routes/auth/createTimeSheets');
-const getTimesheet = require('./routes/auth/getTImesheets');
-const updateTimesheet = require('./routes/auth/updateTimeSheet');
-const deleteTimesheet = require('./routes/auth/deleteTimeSheet');
-
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -47,12 +32,30 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+// import Routes
+const registerRouter = require('./routes/register')
+const loginRouter = require('./routes/login');
+
+
+// import Authorization required routes
+const getStaffRouter = require('./routes/auth/getStaff');
+const addStaffRouter = require('./routes/auth/addStaff');
+const updateStaffRouter = require('./routes/auth/updateStaff');
+const deleteStaffRouter = require('./routes/auth/deleteStaff');
+const createTimeSheet = require('./routes/auth/createTimeSheets');
+const getTimesheet = require('./routes/auth/getTImesheets');
+const updateTimesheet = require('./routes/auth/updateTimeSheet');
+const deleteTimesheet = require('./routes/auth/deleteTimeSheet');
+
+
+
 //Routes
 app.use('/register', registerRouter);
-app.use('/users', usersRouter);
 app.use('/login', loginRouter);
-app.use('/auth/manage', manageRouter);
-app.use('/auth/addStaff', addStaffRouter);
+app.use('/auth/getstaff', getStaffRouter);
+app.use('/auth/addstaff', addStaffRouter);
+app.use('/auth/updatestaff/:staffId', updateStaffRouter);
+app.use('/auth/deletestaff/:staffId', deleteStaffRouter);
 app.use('/auth/:staffId/createtimesheet', createTimeSheet);
 app.use('/auth/:staffId/gettimesheet', getTimesheet);
 app.use('/auth/:staffId/updatetimesheet/:timesheetId', updateTimesheet);

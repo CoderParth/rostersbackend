@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+require('dotenv').config()
 
 module.exports = async (request, response, next) => {
 	try {
@@ -8,7 +9,7 @@ module.exports = async (request, response, next) => {
 		//compare the token
 		const decodedToken = await jwt.verify(
 			token,
-			"SECRET-TOKEN"
+			SECRET_TOKEN
 		)
 
 		// retrieve the details of the user
