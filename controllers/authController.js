@@ -9,7 +9,7 @@ module.exports = async (request, response, next) => {
 		//compare the token
 		const decodedToken = await jwt.verify(
 			token,
-			SECRET_TOKEN
+			process.env.SECRET_TOKEN
 		)
 
 		// retrieve the details of the user

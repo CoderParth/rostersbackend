@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/userModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+require('dotenv').config()
 
 router.post('/', (request, response) => {
 	//CHeck if the user exists
@@ -22,7 +23,7 @@ router.post('/', (request, response) => {
 							userId: user._id,
 							userEmail: user.email,
 						},
-						"SECRET-TOKEN",
+						process.env.SECRET_TOKEN,
 						{
 							expiresIn: "24h"
 						}
