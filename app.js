@@ -41,6 +41,8 @@ const loginRouter = require('./routes/login');
 const resetEmailRouter = require('./routes/passwordResetEmail');
 const changePasswordRouter = require('./routes/changePassword');
 
+//pdf routes
+const createPdf = require('./routes/pdf/createPdf');
 
 // import Authorization required routes
 const getStaffRouter = require('./routes/auth/getStaff');
@@ -67,7 +69,8 @@ app.use('/auth/:staffId/updatetimesheet/:timesheetId', updateTimesheet);
 app.use('/auth/:staffId/deletetimesheet/:timesheetId', deleteTimesheet);
 app.use('/passwordReset', resetEmailRouter);
 app.use('/changePassword/:userId/:token', changePasswordRouter);
-
+//pdf routes
+app.use('/createPdf', createPdf);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

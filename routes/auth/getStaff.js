@@ -7,7 +7,6 @@ const Staff = require("../../models/staffModel");
 
 router.get('/', auth, async (request, response,) => {
 	const staffs = await Staff.find({ user: request.user.userId });
-	console.log(staffs);
 	response.send(`${request.user.userEmail}
 		Here is a list of your staffs: ${staffs}`);
 });

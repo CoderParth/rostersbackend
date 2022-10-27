@@ -9,8 +9,6 @@ router.post('/', async (request, response) => {
 	const userId = request.params.userId;
 	const token = request.params.token;
 	const newPassword = request.body.newPassword;
-
-
 	//verifying the token
 	const decodedToken = await jwt.verify(token, process.env.SECRET_TOKEN);
 	// hashing the password
