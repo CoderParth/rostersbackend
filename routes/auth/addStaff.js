@@ -70,7 +70,7 @@ router.post('/', auth, upload.single('userImage'), (request, response) => {
 			.catch((error) => {
 				response.status(500).send({
 					message: "Failed to add staff",
-					error
+					error: error
 				})
 			})
 	})

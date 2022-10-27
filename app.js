@@ -40,6 +40,7 @@ const registerRouter = require('./routes/register')
 const loginRouter = require('./routes/login');
 const resetEmailRouter = require('./routes/passwordResetEmail');
 const changePasswordRouter = require('./routes/changePassword');
+const homeRouter = require('./routes/homepage');
 
 //pdf routes
 const createPdf = require('./routes/pdf/createPdf');
@@ -57,6 +58,7 @@ const deleteTimesheet = require('./routes/auth/deleteTimeSheet');
 
 
 //Routes
+app.use('/', homeRouter);
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 app.use('/auth/getstaff', getStaffRouter);
@@ -74,6 +76,7 @@ app.use('/createPdf', createPdf);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
+  res.send("NOT FOUND OR NOT AUTHORISED");
   next(createError(404));
 });
 
