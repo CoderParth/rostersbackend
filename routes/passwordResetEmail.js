@@ -27,7 +27,7 @@ router.post('/', (request, response) => {
 				html: `<body>
 				<p> Hi ${user.email}!
 				<br> Please POST on the following link and set the key as "newPassword" while using POST method to reset your password.
-				http://localhost:3000/changePassword/${user._id}/${token}
+				http://rostersbackend.herokuapp.com/changePassword/${user._id}/${token}
 				<br> If you did not perform this request please ignore this email.
 				</p>
 				</body>`
