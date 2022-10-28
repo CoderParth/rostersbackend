@@ -75,8 +75,8 @@ app.use('/changePassword/:userId/:token', changePasswordRouter);
 app.use('/createPdf', createPdf);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  res.send("NOT FOUND OR NOT AUTHORISED");
+app.use('*', function (req, res, next) {
+  res.send("NOT FOUND");
   next(createError(404));
 });
 
